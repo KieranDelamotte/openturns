@@ -1,0 +1,114 @@
+
+%feature("docstring") OT::IterativeSkewness
+"Iterative skewness.
+
+Available constructor:
+    IterativeSkewness(dimension)
+
+Parameters
+----------
+dimension : UnsignedInteger
+    Dimension of the input data
+
+Notes
+-----
+This class iteratively computes the skewness of several :class:`~openturns.Point` or :class:`~openturns.Sample`.
+
+This class don't store the input data in memory.
+
+See also
+--------
+IterativeAlgorithm
+
+Examples
+--------
+>>> import openturns as ot
+>>> ot.RandomGenerator.SetSeed(0)
+>>> dim = 5
+>>> mySkewness = ot.IterativeSkewness(dim)
+>>> n = ot.Normal(dim)
+>>> size = 50
+
+Increment with 50 points:
+>>> for i in range(size):
+...     point = n.getRealization()
+...     mySkewness.increment(point)
+
+>>> print (mySkewness.getIteration())
+50
+
+>>> print (mySkewness.getMean())
+[-0.10648,0.0149604,-0.0470775,-0.0297845,-0.120995]
+
+>>> print (mySkewness.getVariance())
+[1.13845,1.03833,0.999317,1.18227,0.691024]
+
+>>> print (mySkewness.getSkewness())
+[0.191203,0.466445,0.0570696,-0.361862,-0.342236]
+
+Increment with one sample of size 50:
+>>> sample = n.getSample(size)
+>>> mySkewness.increment(sample)
+
+>>> print (mySkewness.getIteration())
+100
+
+>>> print (mySkewness.getMean())
+[0.091889,0.0441668,0.0379388,-0.162883,0.044894]
+
+>>> print (mySkewness.getVariance())
+[1.03484,0.798317,1.07118,1.01998,0.921904]
+
+>>> print (mySkewness.getSkewness())
+[-0.120833,0.175682,-0.18921,-0.00231464,0.0521928]"
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OT::IterativeSkewness::getSkewness
+"Returns the current value of the iterative curtosis
+
+Returns
+-------
+curtosis : :class:`~openturns.Point`
+    current values of the iterative curtosis."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OT::IterativeSkewness::getVariance
+"Returns the current value of the variance from internal data
+
+Returns
+-------
+variance : :class:`~openturns.Point`
+    current values of the variance."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OT::IterativeSkewness::getCoeficientOfVariation
+"Returns the coefficient of variation from internal data
+
+Returns
+-------
+coefficientOfvariation : :class:`~openturns.Point`
+    current value of the coefficients of variation."
+
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OT::IterativeSkewness::getStandardDeviation
+"Returns the coefficient of variation from internal data
+
+Returns
+-------
+standardDeviation : :class:`~openturns.Point`
+    current value of the standard deviation."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OT::IterativeSkewness::getMean
+"Returns the values of the mean from internal data
+
+Returns
+-------
+mean : :class:`~openturns.Point`
+    current value of the mean."

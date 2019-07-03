@@ -1,0 +1,70 @@
+%feature("docstring") OT::IterativeMean
+"Iterative sample mean.
+
+Available constructor:
+    IterativeMean(dimension)
+
+Parameters
+----------
+dimension : UnsignedInteger
+    Dimension of the input data
+
+Notes
+-----
+This class iteratively computes the sample mean :math:`\mu^{}_{i}` of several :class:`~openturns.Point` or :class:`~openturns.Sample`.
+
+This mean is defined as:
+
+.. math::
+
+   \begin{array}{cccc}
+      \mu^{}_{0} & = & 0 & \\
+      \mu^{}_{i} & = & \mu^{}_{i-1} + \frac{1}{i}(u(i) - \mu^{}_{i-1}) & \forall i \in \mathbb{N}^{*}
+   \end{array}
+
+With :math:`u(i)` the :math:`i^{th}` input point.
+
+See also
+--------
+IterativeAlgorithm
+
+Examples
+--------
+>>> import openturns as ot
+>>> ot.RandomGenerator.SetSeed(0)
+>>> dim = 5
+>>> myMean = ot.IterativeMean(dim)
+>>> n = ot.Normal(dim)
+>>> size = 50
+
+Increment with 50 points:
+>>> for i in range(size):
+...     point = n.getRealization()
+...     myMean.increment(point)
+
+>>> print (myMean.getIteration())
+50
+
+>>> print (myMean.getMean())
+[-0.10648,0.0149604,-0.0470775,-0.0297845,-0.120995]
+
+Increment with one sample of size 50:
+>>> sample = n.getSample(size)
+>>> myMean.increment(sample)
+
+>>> print (myMean.getIteration())
+100
+
+>>> print (myMean.getMean())
+[0.091889,0.0441668,0.0379388,-0.162883,0.044894]"
+
+// ---------------------------------------------------------------------
+
+
+%feature("docstring") OT::IterativeMean::getMean
+"Returns the values of the mean
+
+Returns
+-------
+mean : :class:`~openturns.Point`
+    current values of the iterative mean."
