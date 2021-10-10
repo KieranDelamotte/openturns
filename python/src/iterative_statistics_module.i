@@ -24,7 +24,6 @@
 /* Base/IterativeStat */
 %include IterativeAlgorithmImplementation.i
 %include IterativeAlgorithm.i
-%include IterativeQuantile.i
 %include IterativeExtrema.i
 %include IterativeThresholdExceedance.i
 %include IterativeKurtosis.i

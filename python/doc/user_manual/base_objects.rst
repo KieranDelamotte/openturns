@@ -165,7 +165,6 @@ Iterative statistics
     IterativeAlgorithm
     IterativeExtrema
     IterativeMean
-    IterativeQuantile
     IterativeSkewness
     IterativeThresholdExceedance
     IterativeVariance
