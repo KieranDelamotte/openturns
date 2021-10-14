@@ -8,35 +8,36 @@ Iterative mean
 
 # %%
 import openturns as ot
+import openturns.viewer as otv
 
 # %%
-# Create the mean object
+# We create the mean object.
 
 # %%
-dim = 5
+dim = 1
 myMean = ot.IterativeMean(dim)
 
 # %%
-# Perform the simulations. In the following session, we increment using the :meth:`~openturns.IterativeMean.increment` method one :class:`~openturns.Point` at a time.
+# We can now perform the simulations. In the following session, we increment using the `increment` method one `Point` at a time. 
+# The current mean is given by the `getMean` and the current number of iterations
+# is given by the `getIteration` method.
 
 # %%
 n = ot.Normal(dim)
-size = 50
+size = 200
+
+data = ot.Sample()
 for i in range(size):
     point = n.getRealization()
     myMean.increment(point)
+    data.add(myMean.getMean())
 
 # %%
-# The :meth:`~openturns.IterativeMean.getMean` method returns the sample mean.
-
-# %%
-myMean.getMean()
-
-# %%
-# The :meth:`~openturns.IterativeMean.getIteration` method returns the sample size.
-
-# %%
-myMean.getIteration()
+# We display the evolution of the mean.
+curve = ot.Curve(data)
+graph = ot.Graph("Evolution of the mean", "iteration nb", "mean", True)
+graph.add(curve)
+view = otv.View(graph)
 
 # %%
 # We can also increment with a `Sample`.
@@ -46,6 +47,8 @@ sample = n.getSample(size)
 myMean.increment(sample)
 
 # %%
-print ("Iteration " + str(myMean.getIteration()))
+# We print the total number of iterations and the mean. 
+print ("Total number of iteration " + str(myMean.getIteration()))
 print (myMean.getMean())
 
+otv.View.ShowAll()
