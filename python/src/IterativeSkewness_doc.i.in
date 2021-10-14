@@ -14,7 +14,7 @@ Notes
 -----
 This class iteratively computes the skewness of several :class:`~openturns.Point` or :class:`~openturns.Sample`.
 
-This class don't store the input data in memory.
+This class does not store the input data in memory.
 
 See also
 --------
