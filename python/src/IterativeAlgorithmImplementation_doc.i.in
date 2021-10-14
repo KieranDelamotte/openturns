@@ -27,10 +27,8 @@ OT_IterativeAlgorithm_doc
 
 Parameters
 ----------
-sample : :class:`~openturns.Sample`
-    New input sample.
-point : :class:`~openturns.Point`
-    New input point."
+data : :class:`~openturns.Point` or :class:`~openturns.Sample`
+    New input point or sample."
 %enddef
 
 %feature("docstring") OT::IterativeAlgorithmImplementation::increment
