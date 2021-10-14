@@ -12,8 +12,7 @@ dimension : UnsignedInteger
 
 Notes
 -----
-Iterative algorithms are persistent objects that can be incremented iteratively.
-This class is pure virtual.
+Base class for iterative algorithms: persistent objects that can be incremented iteratively.
 "
 %enddef
 
