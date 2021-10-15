@@ -142,15 +142,6 @@ int main(int, char *[])
     Scalar factor1 = sqrt(size) * sqrt(size - 1.0) / (size - 2.0);
     assertEqual(referenceskewness, computedskewness * factor1, 1.0e-12);
     Point computedkurtosis = iterkurtosisPoint.getKurtosis();
-//     factor1 = (size + 1.0) * size * (size - 1.0) / ((size - 2.0) * (size - 3.0));
-//     Scalar factor2 = -3.0 * (3.0 * size - 5.0) / ((size - 2.0) * (size - 3.0));
-//     computedkurtosis[0] += 3;
-//     computedkurtosis[1] += 3;
-//     computedkurtosis /= size*size;
-//     computedkurtosis *= factor1;
-//     computedkurtosis[0] += factor2;
-//     computedkurtosis[1] += factor2;
-//     assertEqual(referencekurtosis, computedkurtosis, 1.0e-12);
     UnsignedInteger iteration = iterkurtosisPoint.getIteration();
     assertEqual(iteration, 4);
 
@@ -165,7 +156,6 @@ int main(int, char *[])
     computedskewness = iterkurtosisSample.getSkewness();
     assertEqual(referenceskewness, computedskewness * factor1, 1.0e-12);
     computedkurtosis = iterkurtosisSample.getKurtosis();
-//     assertEqual(referencekurtosis, computedkurtosis, 1.0e-12);
     iteration = iterkurtosisSample.getIteration();
     assertEqual(iteration, 4);
 
@@ -186,7 +176,6 @@ int main(int, char *[])
     factor1 = sqrt(size) * sqrt(size - 1.0) / (size - 2.0);
     assertEqual(referencemixedskewness, computedskewness * factor1, 1.0e-12);
     computedkurtosis = iterkurtosisMixed.getKurtosis();
-//     assertEqual(referencemixedkurtosis, computedkurtosis, 1.0e-12);
     iteration = iterkurtosisMixed.getIteration();
     assertEqual(iteration, 8);
   }
