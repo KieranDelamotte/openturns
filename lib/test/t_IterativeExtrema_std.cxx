@@ -36,40 +36,12 @@ void assertFalse(bool condition)
   if (condition) throw TestFailed("Boolean is not false");
 }
 
-// Check if two Scalar are equal
-void assertEqual(Scalar value1, Scalar value2, Scalar epsilon = 0.0)
-{
-  if (abs(value1 - value2) > epsilon)
-  {
-    throw TestFailed(OSS() << "Value " << value1 << " is not equal to " << value2);
-  }
-}
-
 // Check if two int are equal
 void assertEqual(UnsignedInteger value1, UnsignedInteger value2)
 {
-  std::cout<<"Checking int. value1="<<value1<<", value2="<<value2<<std::endl;
   if (value1 != value2)
   {
     throw TestFailed(OSS() << "Value " << value1 << " is not equal to " << value2);
-  }
-}
-
-// Check if two Point are equal
-void assertEqual(Point value1, Point value2, Scalar epsilon = 0.0)
-{
-  UnsignedInteger dim1 = value1.getDimension();
-  UnsignedInteger dim2 = value2.getDimension();
-  assertEqual(dim1, dim2);
-  for ( UnsignedInteger index = 0; index < dim1; ++ index)
-  {
-    std::cout<<"Checking Point. index="<<index<<", value1="<<value1[index]<<", value2="<<value2[index]<<std::endl;
-    if (abs(value1[index] - value2[index]) > epsilon)
-    {
-      throw TestFailed(OSS() << "Value " << value1[index] \
-                       << " is not equal to " << value2[index] \
-                       << " at index=" << index);
-    }
   }
 }
 
@@ -111,9 +83,9 @@ int main(int, char *[])
     iterextremaPoint.increment(point2);
     iterextremaPoint.increment(point3);
     Point computedmin = iterextremaPoint.getMin();
-    assertEqual(referencemin, computedmin);
+    assert_almost_equal(referencemin, computedmin, 0, 0);
     Point computedmax = iterextremaPoint.getMax();
-    assertEqual(referencemax, computedmax);
+    assert_almost_equal(referencemax, computedmax, 0, 0);
     UnsignedInteger iteration = iterextremaPoint.getIteration();
     assertEqual(iteration, 3);
 
@@ -122,9 +94,9 @@ int main(int, char *[])
     IterativeExtrema iterextremaSample(dimension);
     iterextremaSample.increment(sample1);
     computedmin = iterextremaSample.getMin();
-    assertEqual(referencemin, computedmin);
+    assert_almost_equal(referencemin, computedmin, 1e-8, 0);
     computedmax = iterextremaSample.getMax();
-    assertEqual(referencemax, computedmax);
+    assert_almost_equal(referencemax, computedmax, 1e-8, 0);
     iteration = iterextremaSample.getIteration();
     assertEqual(iteration, 3);
 
@@ -136,9 +108,9 @@ int main(int, char *[])
     iterextremaMixed.increment(point2);
     iterextremaMixed.increment(point3);
     computedmin = iterextremaMixed.getMin();
-    assertEqual(referencemin, computedmin);
+    assert_almost_equal(referencemin, computedmin, 1e-8, 0);
     computedmax = iterextremaMixed.getMax();
-    assertEqual(referencemax, computedmax);
+    assert_almost_equal(referencemax, computedmax, 1e-8, 0);
     iteration = iterextremaMixed.getIteration();
     assertEqual(iteration, 6);
   }
