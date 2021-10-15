@@ -4,7 +4,7 @@ Iterative mean
 """
 
 # %%
-# In this example, we show how to use the `IterativeMean` class. This algorithm computes an estimate of the mean using iterative algorithms. In other words, this algorithm can be used to iteratively update the estimate of the mean using one point at a time instead of using the full sample. 
+# In this example, we show how to use the :class:`~openturns.IterativeMean` class. This algorithm computes an estimate of the mean using iterative algorithms. In other words, this algorithm can be used to iteratively update the estimate of the mean using one point at a time instead of using the full sample. 
 
 # %%
 import openturns as ot
@@ -17,7 +17,7 @@ dim = 5
 myMean = ot.IterativeMean(dim)
 
 # %%
-# Perform the simulations. In the following session, we increment using the `increment` method one `Point` at a time.
+# Perform the simulations. In the following session, we increment using the :meth:`~openturns.IterativeMean.increment` method one :class:`~openturns.Point` at a time.
 
 # %%
 n = ot.Normal(dim)
@@ -27,13 +27,13 @@ for i in range(size):
     myMean.increment(point)
 
 # %%
-# The `getMean` method returns the sample mean.
+# The :meth:`~openturns.IterativeMean.getMean` method returns the sample mean.
 
 # %%
 myMean.getMean()
 
 # %%
-# The `getIteration` method return the sample size.
+# The :meth:`~openturns.IterativeMean.getIteration` method returns the sample size.
 
 # %%
 myMean.getIteration()
