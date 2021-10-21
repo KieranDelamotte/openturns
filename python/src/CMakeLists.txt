@@ -239,6 +239,14 @@ ot_add_python_module(iterative_statistics iterative_statistics_module.i
                       IterativeSkewness.i IterativeSkewness_doc.i.in
                       IterativeVariance.i IterativeVariance_doc.i.in
                       IterativeMean.i IterativeMean_doc.i.in
+                      FieldIterativeAlgorithm.i #FieldIterativeAlgorithm_doc.i.in
+                      FieldIterativeAlgorithmImplementation.i #FieldIterativeAlgorithmImplementation_doc.i.in
+                      FieldIterativeExtrema.i #FieldIterativeExtrema_doc.i.in
+                      FieldIterativeThresholdExceedance.i #FieldIterativeThresholdExceedance_doc.i.in
+                      FieldIterativeKurtosis.i #FieldIterativeKurtosis_doc.i.in
+                      FieldIterativeSkewness.i #FieldIterativeSkewness_doc.i.in
+                      FieldIterativeVariance.i #FieldIterativeVariance_doc.i.in
+                      FieldIterativeMean.i #FieldIterativeMean_doc.i.in
                       BaseIterativeStatisticsTemplateDefs.i
                    )
 

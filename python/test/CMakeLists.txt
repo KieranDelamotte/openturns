@@ -664,6 +664,7 @@ ot_pyinstallcheck_test (IterativeSkewness_std)
 ot_pyinstallcheck_test (IterativeKurtosis_std)
 ot_pyinstallcheck_test (IterativeExtrema_std)
 ot_pyinstallcheck_test (IterativeThreshold_std)
+ot_pyinstallcheck_test (FieldIterativeMean_std)
 
 ## OrthogonalBasis
 ot_pyinstallcheck_test (LinearEnumerateFunction_std)

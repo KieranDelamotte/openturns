@@ -7,6 +7,7 @@
 #include "openturns/OTconfig.hxx"
 #include "openturns/OTCommon.hxx"
 #include "openturns/OTType.hxx"
+#include "openturns/OTStat.hxx"
 #include "openturns/OTIterativeStat.hxx"
 %}
 
@@ -21,6 +22,9 @@
 /* Base/Type */
 %import typ_module.i
 
+/* Base/Stat */
+%import statistics_module.i
+
 /* Base/IterativeStat */
 %include IterativeAlgorithmImplementation.i
 %include IterativeAlgorithm.i
@@ -30,3 +34,11 @@
 %include IterativeSkewness.i
 %include IterativeVariance.i
 %include IterativeMean.i
+%include FieldIterativeAlgorithmImplementation.i
+%include FieldIterativeAlgorithm.i
+%include FieldIterativeExtrema.i
+%include FieldIterativeThresholdExceedance.i
+%include FieldIterativeKurtosis.i
+%include FieldIterativeSkewness.i
+%include FieldIterativeVariance.i
+%include FieldIterativeMean.i
