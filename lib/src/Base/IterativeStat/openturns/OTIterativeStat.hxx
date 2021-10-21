@@ -22,6 +22,14 @@
 #ifndef OPENTURNS_OTITERATIVESTAT_HXX
 #define OPENTURNS_OTITERATIVESTAT_HXX
 
+#include "openturns/FieldIterativeAlgorithmImplementation.hxx"
+#include "openturns/FieldIterativeAlgorithm.hxx"
+#include "openturns/FieldIterativeExtrema.hxx"
+#include "openturns/FieldIterativeThresholdExceedance.hxx"
+#include "openturns/FieldIterativeKurtosis.hxx"
+#include "openturns/FieldIterativeSkewness.hxx"
+#include "openturns/FieldIterativeVariance.hxx"
+#include "openturns/FieldIterativeMean.hxx"
 #include "openturns/IterativeAlgorithmImplementation.hxx"
 #include "openturns/IterativeAlgorithm.hxx"
 #include "openturns/IterativeExtrema.hxx"

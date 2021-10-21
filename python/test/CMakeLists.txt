@@ -661,6 +661,7 @@ ot_pyinstallcheck_test (Splitter_std IGNOREOUT)
 ot_pyinstallcheck_test (IterativeExtrema_std IGNOREOUT)
 ot_pyinstallcheck_test (IterativeThreshold_std IGNOREOUT)
 ot_pyinstallcheck_test (IterativeMoments_std IGNOREOUT)
+ot_pyinstallcheck_test (FieldIterativeMean_std)
 
 ## OrthogonalBasis
 ot_pyinstallcheck_test (LinearEnumerateFunction_std)
