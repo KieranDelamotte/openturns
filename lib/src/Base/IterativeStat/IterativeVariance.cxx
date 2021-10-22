@@ -49,16 +49,16 @@ Point IterativeVariance::getVariance() const
   return varData_;
 }
 
-Point IterativeVariance::getCoeficientOfVariation() const
+Point IterativeVariance::getCoefficientOfVariation() const
 {
-  Point coeficientOfVariationData(dimension_, 0.0);
+  Point coefficientOfVariationData(dimension_, 0.0);
 
   for (UnsignedInteger i = 0; i < dimension_; ++i)
   {
-    coeficientOfVariationData[i] = pow(varData_[i], 0.5) / meanData_[i];
+    coefficientOfVariationData[i] = pow(varData_[i], 0.5) / meanData_[i];
   }
 
-  return coeficientOfVariationData;
+  return coefficientOfVariationData;
 }
 
 Point IterativeVariance::getStandardErrorOfTheMean() const

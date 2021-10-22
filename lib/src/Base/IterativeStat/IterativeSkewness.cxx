@@ -80,16 +80,16 @@ Point IterativeSkewness::getVariance() const
   return varData;
 }
 
-Point IterativeSkewness::getCoeficientOfVariation() const
+Point IterativeSkewness::getCoefficientOfVariation() const
 {
-  Point coeficientOfVariationData(dimension_, 0.0);
+  Point coefficientOfVariationData(dimension_, 0.0);
 
   for (UnsignedInteger i = 0; i < dimension_; ++i)
   {
-    coeficientOfVariationData[i] = pow(mean2Data_[i] - pow(mean1Data_[i], 2), 0.5) / mean1Data_[i];
+    coefficientOfVariationData[i] = pow(mean2Data_[i] - pow(mean1Data_[i], 2), 0.5) / mean1Data_[i];
   }
 
-  return coeficientOfVariationData;
+  return coefficientOfVariationData;
 }
 
 Point IterativeSkewness::getStandardDeviation() const

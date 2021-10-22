@@ -48,7 +48,7 @@ public:
   String __repr__() const;
 
   /* String converter */
-  String __str__() const;
+  String __str__(const String & offset) const;
 
   Point getMin() const;
 

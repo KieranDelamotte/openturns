@@ -44,10 +44,10 @@ String IterativeExtrema::__repr__() const
   return oss;
 }
 
-String IterativeExtrema::__str__() const
+String IterativeExtrema::__str__(const String & offset) const
 {
   OSS oss(false);
-  oss << getClassName() << "(";
+  oss << offset << getClassName() << "(";
   String separator("");
   for (UnsignedInteger i = 0; i < dimension_; ++i)
   {

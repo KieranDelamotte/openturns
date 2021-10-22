@@ -54,7 +54,7 @@ public:
 
   Point getVariance() const;
 
-  Point getCoeficientOfVariation() const;
+  Point getCoefficientOfVariation() const;
 
   Point getStandardDeviation() const;
 
