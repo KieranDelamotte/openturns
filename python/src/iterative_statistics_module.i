@@ -35,7 +35,4 @@
 %include FieldIterativeAlgorithm.i
 %include FieldIterativeExtrema.i
 %include FieldIterativeThresholdExceedance.i
-%include FieldIterativeKurtosis.i
-%include FieldIterativeSkewness.i
-%include FieldIterativeVariance.i
-%include FieldIterativeMean.i
+%include FieldIterativeMoments.i

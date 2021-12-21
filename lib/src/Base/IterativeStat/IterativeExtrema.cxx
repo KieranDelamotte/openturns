@@ -87,7 +87,7 @@ Point IterativeExtrema::getMax() const
 /** Increment method from a Point */
 void IterativeExtrema::increment(const Point & newData)
 {
-  if (newData.getSize() != dimension_) throw InvalidArgumentException(HERE) << "Error: the given Point is not compatible with the dimension of the iterative extrema.";
+  //if (newData.getSize() != dimension_) throw InvalidArgumentException(HERE) << "Error: the given Point is not compatible with the dimension of the iterative extrema.";
   iteration_ += 1;
   if (iteration_ > 1)
   {
@@ -116,7 +116,7 @@ void IterativeExtrema::increment(const Point & newData)
 /** Increment method from a Sample */
 void IterativeExtrema::increment(const Sample & newData)
 {
-  if (newData.getDimension() != dimension_) throw InvalidArgumentException(HERE) << "Error: the given Sample is not compatible with the dimension of the extrema.";
+  //if (newData.getDimension() != dimension_) throw InvalidArgumentException(HERE) << "Error: the given Sample is not compatible with the dimension of the extrema.";
 
   for (UnsignedInteger j = 0; j < newData.getSize(); ++j)
   {

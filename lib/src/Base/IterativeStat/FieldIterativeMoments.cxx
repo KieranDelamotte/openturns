@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief The field kurtosis iterative algorithm
+ *  @brief The field moments iterative algorithm
  *
  *  Copyright 2005-2021 Airbus-EDF-IMACS-ONERA-Phimeca
  *
@@ -19,116 +19,118 @@
  *
  */
 
-#include "openturns/FieldIterativeKurtosis.hxx"
+#include "openturns/FieldIterativeMoments.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 
 BEGIN_NAMESPACE_OPENTURNS
 
-CLASSNAMEINIT(FieldIterativeKurtosis)
+CLASSNAMEINIT(FieldIterativeMoments)
 
-static const Factory<FieldIterativeKurtosis> Factory_FieldIterativeKurtosis;
+static const Factory<FieldIterativeMoments> Factory_FieldIterativeMoments;
 
 /* Parameter constructor */
-FieldIterativeKurtosis::FieldIterativeKurtosis(const UnsignedInteger verticesNumber,
+FieldIterativeMoments::FieldIterativeMoments(const UnsignedInteger verticesNumber,
+    const UnsignedInteger order,
     const UnsignedInteger dimension)
   : FieldIterativeAlgorithmImplementation(verticesNumber, dimension)
-  , iterativeKurtosis_(verticesNumber * dimension)
+  , iterativeMoments_(order, verticesNumber * dimension)
 {
-  // Nothing to do
+  // Nothing
 }
 
 /* Virtual constructor */
-FieldIterativeKurtosis * FieldIterativeKurtosis::clone() const
+FieldIterativeMoments * FieldIterativeMoments::clone() const
 {
-  return new FieldIterativeKurtosis(*this);
+  return new FieldIterativeMoments(*this);
 }
 
 /* String converter */
-String FieldIterativeKurtosis::__repr__() const
+String FieldIterativeMoments::__repr__() const
 {
   OSS oss(true);
-  oss << "class=" << FieldIterativeKurtosis::GetClassName()
-      << " iterativeKurtosis=" << iterativeKurtosis_;
+  oss << "class=" << FieldIterativeMoments::GetClassName()
+      << " iterativeMoments=" << iterativeMoments_;
   return oss;
 }
 
-String FieldIterativeKurtosis::__str__(const String & offset) const
+String FieldIterativeMoments::__str__(const String & offset) const
 {
   OSS oss(false);
   oss << offset
       << ", vertices number=" << verticesNumber_
       << ", field dimension=" << dimension_
-      << iterativeKurtosis_.__str__(offset);
+      << ", order=" << iterativeMoments_.getOrder()
+      << iterativeMoments_.__str__(offset);
   return oss;
 }
 
 /* Return the accumulated kurtosis */
-Sample FieldIterativeKurtosis::getKurtosis() const
+Sample FieldIterativeMoments::getKurtosis() const
 {
   SampleImplementation kurtosis(verticesNumber_, dimension_);
-  kurtosis.setData(iterativeKurtosis_.getKurtosis());
+  kurtosis.setData(iterativeMoments_.getKurtosis());
   return kurtosis;
 }
 
 /* Return the accumulated skewness */
-Sample FieldIterativeKurtosis::getSkewness() const
+Sample FieldIterativeMoments::getSkewness() const
 {
   SampleImplementation skewness(verticesNumber_, dimension_);
-  skewness.setData(iterativeKurtosis_.getSkewness());
+  skewness.setData(iterativeMoments_.getSkewness());
   return skewness;
 }
 
 /* Return the accumulated variance */
-Sample FieldIterativeKurtosis::getVariance() const
+Sample FieldIterativeMoments::getVariance() const
 {
   SampleImplementation variance(verticesNumber_, dimension_);
-  variance.setData(iterativeKurtosis_.getVariance());
+  variance.setData(iterativeMoments_.getVariance());
   return variance;
 }
 
 /* Return the accumulated coefficient of variation */
-Sample FieldIterativeKurtosis::getCoeficientOfVariation() const
+Sample FieldIterativeMoments::getCoefficientOfVariation() const
 {
   SampleImplementation coefficientOfVariation(verticesNumber_, dimension_);
-  coefficientOfVariation.setData(iterativeKurtosis_.getCoefficientOfVariation());
+  coefficientOfVariation.setData(iterativeMoments_.getCoefficientOfVariation());
   return coefficientOfVariation;
 }
 
 /* Return the accumulated standard deviation */
-Sample FieldIterativeKurtosis::getStandardDeviation() const
+Sample FieldIterativeMoments::getStandardDeviation() const
 {
   SampleImplementation standardDeviation(verticesNumber_, dimension_);
-  standardDeviation.setData(iterativeKurtosis_.getStandardDeviation());
+  standardDeviation.setData(iterativeMoments_.getStandardDeviation());
   return standardDeviation;
 }
 
 /* Return the accumulated mean */
-Sample FieldIterativeKurtosis::getMean() const
+Sample FieldIterativeMoments::getMean() const
 {
   SampleImplementation mean(verticesNumber_, dimension_);
-  mean.setData(iterativeKurtosis_.getMean());
+  mean.setData(iterativeMoments_.getMean());
   return mean;
 }
 
 /* Increment the statistics by one new data */
-void FieldIterativeKurtosis::increment(const Sample & newData)
+void FieldIterativeMoments::increment(const Sample & newData)
 {
-  iterativeKurtosis_.increment(newData.getImplementation()->getData());
+  iterativeMoments_.increment(newData.getImplementation()->getData());
 }
 
 /* Method save() stores the object through the StorageManager */
-void FieldIterativeKurtosis::save(Advocate & adv) const
+void FieldIterativeMoments::save(Advocate & adv) const
 {
   FieldIterativeAlgorithmImplementation::save(adv);
-  adv.saveAttribute( "iterativeKurtosis_", iterativeKurtosis_);
+  adv.saveAttribute( "iterativeMoments_", iterativeMoments_);
 }
 
 
 /* Method load() reloads the object from the StorageManager */
-void FieldIterativeKurtosis::load(Advocate & adv)
+void FieldIterativeMoments::load(Advocate & adv)
 {
   FieldIterativeAlgorithmImplementation::load(adv);
-  adv.loadAttribute( "iterativeKurtosis_", iterativeKurtosis_);
+  adv.loadAttribute( "iterativeMoments_", iterativeMoments_);
 }
 
 END_NAMESPACE_OPENTURNS

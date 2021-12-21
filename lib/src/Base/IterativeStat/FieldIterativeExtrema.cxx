@@ -74,6 +74,7 @@ Sample FieldIterativeExtrema::getMin() const
 Sample FieldIterativeExtrema::getMax() const
 {
   SampleImplementation max(verticesNumber_, dimension_);
+  std::cout << iterativeExtrema_.getMax() << std::endl;
   max.setData(iterativeExtrema_.getMax());
   return max;
 }

@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief The field kurtosis iterative algorithm
+ *  @brief The field moments iterative algorithm
  *
  *  Copyright 2005-2021 Airbus-EDF-IMACS-ONERA-Phimeca
  *
@@ -19,15 +19,15 @@
  *
  */
 
-#ifndef OPENTURNS_FIELDITERATIVEKURTOSIS_HXX
-#define OPENTURNS_FIELDITERATIVEKURTOSIS_HXX
+#ifndef OPENTURNS_FIELDITERATIVEMOMENTS_HXX
+#define OPENTURNS_FIELDITERATIVEMOMENTS_HXX
 
 #include "openturns/FieldIterativeAlgorithmImplementation.hxx"
-#include "openturns/IterativeKurtosis.hxx"
+#include "openturns/IterativeMoments.hxx"
 
 BEGIN_NAMESPACE_OPENTURNS
 
-class OT_API FieldIterativeKurtosis
+class OT_API FieldIterativeMoments
   : public FieldIterativeAlgorithmImplementation
 {
   CLASSNAME
@@ -35,11 +35,12 @@ class OT_API FieldIterativeKurtosis
 public:
 
   /** Parameter constructor */
-  explicit FieldIterativeKurtosis(const UnsignedInteger verticesNumber = 1,
-                                  const UnsignedInteger dimension = 1);
+  explicit FieldIterativeMoments(const UnsignedInteger verticesNumber = 1,
+                                 const UnsignedInteger order = 2,
+                                 const UnsignedInteger dimension = 1);
 
   /** Virtual constructor */
-  FieldIterativeKurtosis * clone() const override;
+  FieldIterativeMoments * clone() const override;
 
   /** Increment the statistics by one new data */
   using FieldIterativeAlgorithmImplementation::increment;
@@ -51,7 +52,7 @@ public:
    * This method compares objects based on their content.
    */
   inline
-  Bool operator ==(const FieldIterativeKurtosis & other) const
+  Bool operator ==(const FieldIterativeMoments & other) const
   {
     return this == &other;
   }
@@ -62,7 +63,7 @@ public:
    * This method compares objects based on their content.
    */
   inline
-  Bool operator !=(const FieldIterativeKurtosis & other) const
+  Bool operator !=(const FieldIterativeMoments & other) const
   {
     return !(operator == (other));
   }
@@ -83,7 +84,7 @@ public:
   Sample getVariance() const;
 
   /** Return the accumulated coefficient of variation */
-  Sample getCoeficientOfVariation() const;
+  Sample getCoefficientOfVariation() const;
 
   /** Return the accumulated standard deviation */
   Sample getStandardDeviation() const;
@@ -99,9 +100,9 @@ public:
 
 private:
   /** The iterative kurtosis algorithm doing the actual work */
-  IterativeKurtosis iterativeKurtosis_;
+  IterativeMoments iterativeMoments_;
 };
 
 END_NAMESPACE_OPENTURNS
 
-#endif /* OPENTURNS_FIELDITERATIVEKURTOSIS_HXX */
+#endif /* OPENTURNS_FIELDITERATIVEMOMENTS_HXX */

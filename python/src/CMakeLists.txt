@@ -240,10 +240,7 @@ ot_add_python_module(iterative_statistics iterative_statistics_module.i
                       FieldIterativeAlgorithmImplementation.i #FieldIterativeAlgorithmImplementation_doc.i.in
                       FieldIterativeExtrema.i #FieldIterativeExtrema_doc.i.in
                       FieldIterativeThresholdExceedance.i #FieldIterativeThresholdExceedance_doc.i.in
-                      FieldIterativeKurtosis.i #FieldIterativeKurtosis_doc.i.in
-                      FieldIterativeSkewness.i #FieldIterativeSkewness_doc.i.in
-                      FieldIterativeVariance.i #FieldIterativeVariance_doc.i.in
-                      FieldIterativeMean.i #FieldIterativeMean_doc.i.in
+                      FieldIterativeMoments.i #FieldIterativeMoments_doc.i.in
                       BaseIterativeStatisticsTemplateDefs.i
                    )
 
