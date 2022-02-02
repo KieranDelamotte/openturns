@@ -85,9 +85,6 @@ protected:
 
 private:
 
-  /** Compute the weight matrix from the weight function */
-  virtual SquareMatrix computeWeightMatrix(const Sample & Y) const override;
-
   /** Compute the p-values with asymptotic formula */
   void computePValuesAsymptotic() const;
 
