@@ -259,9 +259,9 @@ by relying on an adapted V-statistics estimator:
 
 .. math::
 
-    \widehat{\mathrm{C-HSIC} (X_i,Y)} = \frac{1}{n^2} \mathrm{Tr} (\hat{W} L_i \hat{W} H_1 L H_2)
+    \widehat{\mathrm{C-HSIC}} (X_i,Y) = \frac{1}{n^2} \mathrm{Tr} (\hat{W} L_i \hat{W} H_1 L H_2)
 
-where :math:`\hat{W} = \frac{W}{\Eset[W]}`, :math:`H_1 = I_n - \frac{1}{n} U\hat{W}`
+where :math:`\hat{W} = \frac{W}{\frac{1}{n}\sum_{j = 1}^{n} W_{j,j} }`, :math:`H_1 = I_n - \frac{1}{n} U\hat{W}`
 and :math:`H_2 = I_n - \frac{1}{n} \hat{W}U`.
 
 Please note that no U-statistics estimator exists for the conditional HSIC. Furhtermore,
