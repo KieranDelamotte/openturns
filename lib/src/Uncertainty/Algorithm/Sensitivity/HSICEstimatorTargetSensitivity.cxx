@@ -52,14 +52,6 @@ HSICEstimatorTargetSensitivity* HSICEstimatorTargetSensitivity::clone() const
   return new HSICEstimatorTargetSensitivity(*this);
 }
 
-/* Compute the weight matrix from a sample */
-SquareMatrix HSICEstimatorTargetSensitivity::computeWeightMatrix(const Sample&) const
-{
-  /* Identity matrix */
-  const IdentityMatrix mat(n_);
-  return mat;
-}
-
 /* Compute the asymptotic p-values */
 void HSICEstimatorTargetSensitivity::computePValuesAsymptotic() const
 {

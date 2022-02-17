@@ -49,13 +49,6 @@ HSICEstimatorGlobalSensitivity* HSICEstimatorGlobalSensitivity::clone() const
   return new HSICEstimatorGlobalSensitivity(*this);
 }
 
-/* Compute the weight matrix */
-SquareMatrix HSICEstimatorGlobalSensitivity::computeWeightMatrix(const Sample&) const
-{
-  IdentityMatrix mat(n_);
-  return mat;
-}
-
 /* Compute the asymptotic p-values */
 void HSICEstimatorGlobalSensitivity::computePValuesAsymptotic() const
 {
