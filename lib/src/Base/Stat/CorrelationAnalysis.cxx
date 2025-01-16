@@ -164,7 +164,7 @@ Interval CorrelationAnalysis::computeSRCConfidenceIntervalWithBootstrap(const fl
   // size of the input sample
   const UnsignedInteger size = firstSample_.getSize();
 
-  // Bootsrap SRC coefficients
+  // Bootstrap SRC coefficients
   for(UnsignedInteger iteration = 0; iteration < nBootstrap; ++iteration)
   {
     const Indices selection = BootstrapExperiment().GenerateSelection(size, size);
