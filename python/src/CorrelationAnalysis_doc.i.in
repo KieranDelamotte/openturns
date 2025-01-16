@@ -106,6 +106,26 @@ coef : :class:`~openturns.Point`
 
 // ---------------------------------------------------------------------
 
+%feature("docstring") OT::CorrelationAnalysis::computeSRCConfidenceIntervalWithBootstrap
+"Confidence intervals for the Standard Regression Coefficient (SRC).
+
+Refer to :ref:`ranking_src`.
+
+Parameters
+----------
+alpha : float
+    Confidence level. Must be in [0,1].
+nBootstrap : int
+    The number of bootstrap iterations. Must be > 1.
+
+Returns
+-------
+interval : :class:`~openturns.Interval`
+    The confidence intervals for SRC indices between the *secondSample* and each coordinate of the *firstSample*."
+
+
+// ---------------------------------------------------------------------
+
 %feature("docstring") OT::CorrelationAnalysis::computeSRRC
 "Correlation evaluation based on the Standard Rank Regression Coefficient.
 

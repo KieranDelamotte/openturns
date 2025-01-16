@@ -23,6 +23,7 @@
 #include "openturns/CorrelationAnalysis.hxx"
 #include "openturns/Exception.hxx"
 #include "openturns/LinearLeastSquares.hxx"
+#include "openturns/BootstrapExperiment.hxx"
 
 BEGIN_NAMESPACE_OPENTURNS
 
@@ -144,6 +145,42 @@ Point CorrelationAnalysis::ComputeSRC(const Sample & firstSample,
   Point src(firstSample.computeStandardDeviation());
   for (UnsignedInteger i = 0; i < dimension; ++ i) src[i] *= linear[i] / stdOutput;
   return src;
+}
+
+/* Compute the confidence intervals for the SRC coefficients between the input sample and the output sample */
+Interval CorrelationAnalysis::computeSRCConfidenceIntervalWithBootstrap(const float alpha,
+                                          const UnsignedInteger nBootstrap) const
+{
+
+  if (!(nBootstrap > 1)) throw InvalidArgumentException(HERE) << "Error: the number of bootstrap iterations should be greater than 1.";
+  if (!(alpha >= 0.0) || !(alpha <= 1.0)) throw InvalidArgumentException(HERE) << "Error: confidence level alpha must be in [0, 1]";
+
+  // number of component
+  UnsignedInteger dimension = firstSample_.getDimension();
+
+  // sample to gather bootstrap iterations
+  Sample bootstrapResults(nBootstrap, dimension);
+
+  // size of the input sample
+  const UnsignedInteger size = firstSample_.getSize();
+
+  // Bootsrap SRC coefficients
+  for(UnsignedInteger iteration = 0; iteration < nBootstrap; ++iteration)
+  {
+    const Indices selection = BootstrapExperiment().GenerateSelection(size, size);
+    const Sample bootFirst = firstSample_.select(selection);
+    const Sample bootSecond = secondSample_.select(selection);
+
+    // compute the SRC coefficient and save it
+    const Point bootSRC = ComputeSRC(bootFirst, bootSecond);
+    bootstrapResults[iteration] = bootSRC;
+  }
+
+  // compute quantiles
+  Point lower = bootstrapResults.computeQuantilePerComponent(alpha / 2.0);
+  Point upper = bootstrapResults.computeQuantilePerComponent(1.0 - alpha / 2.0);
+
+  return Interval(lower, upper);
 }
 
 /* Compute the Partial Correlation Coefficients (PCC) between the input sample and the output sample */

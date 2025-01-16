@@ -44,6 +44,13 @@ ott.assert_almost_equal(
     src, [0.9486832980505138, 0.31622776601683794], 0.0, 1e-2
 )  # sqrt of squared_src
 
+# SRC confidence intervals with bootstrap
+srcci = corr_analysis.computeSRCConfidenceIntervalWithBootstrap(0.05, 100)
+lower = srcci.getLowerBound()
+upper = srcci.getUpperBound()
+ott.assert_almost_equal(srcci.getLowerBound(), [0.94696, 0.31231], 0.0, 1e-2)  # approximate value
+ott.assert_almost_equal(srcci.getUpperBound(), [0.95093, 0.316239], 0.0, 1e-2)  # approximate value
+
 srrc = corr_analysis.computeSRRC()
 ott.assert_almost_equal(srrc, [0.94, 0.30], 0.0, 1e-2)  # approximate value
 

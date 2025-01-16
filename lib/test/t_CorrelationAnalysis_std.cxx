@@ -73,6 +73,13 @@ int main(int, char *[])
     Point src(corr_analysis.computeSRC());
     assert_almost_equal(src, Point({0.9486832980505138, 0.31622776601683794}), 0.0, 1e-2); // sqrt of squared_src
 
+    // SRC confidence intervals with bootstrap
+    Interval srcci(corr_analysis.computeSRCConfidenceIntervalWithBootstrap(0.05, 100));
+    lower_bound = srcci.getLowerBound();
+    upper_bound = srcci.getUpperBound();
+    assert_almost_equal(lower_bound, Point({0.94696, 0.31231}), 0.0, 1e-2); // approximate value
+    assert_almost_equal(upper_bound, Point({0.95093, 0.316239}), 0.0, 1e-2); // approximate value
+
     Point srrc(corr_analysis.computeSRRC());
     assert_almost_equal(srrc, Point({0.94, 0.30}), 0.0, 1e-2); // approximate value
 

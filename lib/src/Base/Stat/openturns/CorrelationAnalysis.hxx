@@ -26,6 +26,7 @@
 #include "openturns/PersistentObject.hxx"
 #include "openturns/Sample.hxx"
 #include "openturns/Point.hxx"
+#include "openturns/BootstrapExperiment.hxx"
 
 BEGIN_NAMESPACE_OPENTURNS
 
@@ -64,6 +65,9 @@ public:
 
   /** Compute the Standard Regression Coefficients (SRC) between the input sample and the output sample */
   Point computeSRC() const;
+
+  /** Compute the confidence intervals for the SRC coefficients between the input sample and the output sample */
+  Interval computeSRCConfidenceIntervalWithBootstrap(const float alpha, const UnsignedInteger nBootstrap) const;
 
   /** Compute the squared Standard Regression Coefficients (SRC) between the input sample and the output sample */
   Point computeSquaredSRC(const Bool normalize = false) const;
